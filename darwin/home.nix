@@ -13,6 +13,7 @@ in
             nodejs
             lua
 
+            git
             vim
             neovim
             yarn
@@ -22,7 +23,6 @@ in
             cscope
 
             gh
-            git
             jq
             fzf
             tree
@@ -30,6 +30,7 @@ in
             ripgrep
             nmap
             mdbook
+            ncdu
 
             lima
             vagrant
