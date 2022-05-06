@@ -11,6 +11,7 @@ in
         packages = with pkgs; [
             go
             nodejs
+            lua
 
             vim
             neovim
@@ -29,8 +30,12 @@ in
             ripgrep
             nmap
             mdbook
+
+            lima
             vagrant
+
             z-lua
+            chezmoi # dotfile manager
         ];
 
     };

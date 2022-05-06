@@ -12,6 +12,7 @@ in
     programs.fish = {
         enable = true;
         shellInit = ''
+          fish_add_path -a ~/.rd/bin
           set fish_greeting
           set fish_color_normal B3B1AD
           set fish_color_command 39BAE6
