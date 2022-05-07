@@ -2,9 +2,12 @@
   description = "Nix flake configuration for person machines";
 
   nixConfig = {
-    trusted-substituters = [
+    substituters = [
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
       "https://cache.nixos.org"
+    ];
+    trusted-substituters = [
+      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
     ];
   };
 
