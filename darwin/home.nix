@@ -12,12 +12,12 @@ in
 
       packages = with pkgs; [
         go
-        nodejs
-        lua
 
         git
         vim
         neovim
+
+        nodejs
         yarn
 
         cmake
@@ -34,6 +34,7 @@ in
         mdbook
         ncdu
         difftastic
+	nixpkgs-fmt
 
         lima
         vagrant
