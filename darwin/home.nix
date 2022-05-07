@@ -4,6 +4,8 @@ let
   homePrefix = system: if isDarwin system then "/Users" else "/home";
 in
   {
+    xdg.enable = true;
+
     home = {
       username = "${username}";
       homeDirectory = "${homePrefix system}/${username}";
