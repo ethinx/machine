@@ -48,24 +48,12 @@
     in
     {
       darwinConfigurations.macos-amd64 = import ./darwin {
-        #{
-        #  inherit name age; # equivalent to `name = name; age = age;`
-        #  inherit (otherAttrs) email; # equivalent to `email = otherAttrs.email`;
-        #}
-        #inherit (nixpkgs) lib;
-
         inherit inputs nixpkgs nixpkgs-unstable home-manager darwin;
         system = "x86_64-darwin";
         username = "ethinx";
       };
 
       darwinConfigurations.macos-arm64 = import ./darwin {
-        #{
-        #  inherit name age; # equivalent to `name = name; age = age;`
-        #  inherit (otherAttrs) email; # equivalent to `email = otherAttrs.email`;
-        #}
-        #inherit (nixpkgs) lib;
-
         inherit inputs nixpkgs nixpkgs-unstable home-manager darwin;
         system = "aarch64-darwin";
         username = "ethinx";
