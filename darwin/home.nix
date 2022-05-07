@@ -3,59 +3,59 @@ let
   isDarwin = system: (builtins.elem system pkgs.lib.platforms.darwin);
   homePrefix = system: if isDarwin system then "/Users" else "/home";
 in
-  {
-    xdg.enable = true;
+{
+  xdg.enable = true;
 
-    home = {
-      username = "${username}";
-      homeDirectory = "${homePrefix system}/${username}";
+  home = {
+    username = "${username}";
+    homeDirectory = "${homePrefix system}/${username}";
 
-      packages = with pkgs; [
-        go
+    packages = with pkgs; [
+      go
 
-        git
-        vim
-        neovim
+      git
+      vim
+      neovim
 
-        nodejs
-        yarn
+      nodejs
+      yarn
 
-        cmake
-        ctags
-        cscope
+      cmake
+      ctags
+      cscope
 
-        gh
-        jq
-        fzf
-        tree
-        watch
-        ripgrep
-        nmap
-        mdbook
-        ncdu
-        difftastic
-	nixpkgs-fmt
+      gh
+      jq
+      fzf
+      tree
+      watch
+      ripgrep
+      nmap
+      mdbook
+      ncdu
+      difftastic
+      nixpkgs-fmt
 
-        lima
-        vagrant
+      lima
+      vagrant
 
-        z-lua
-        chezmoi # dotfile manager
-      ];
+      z-lua
+      chezmoi # dotfile manager
+    ];
 
-    };
+  };
 
-    programs.git = {
-      enable = true;
-      extraConfig = {
-        init.defaultBranch = "main";
+  programs.git = {
+    enable = true;
+    extraConfig = {
+      init.defaultBranch = "main";
 
-        diff = {
-          tool = "difftastic";
-          external = "difft";
-        };
-
-        difftool.diffstatic.cmd = "difft $LOCAL $REMOTE";
+      diff = {
+        tool = "difftastic";
+        external = "difft";
       };
+
+      difftool.diffstatic.cmd = "difft $LOCAL $REMOTE";
     };
-  }
+  };
+}
