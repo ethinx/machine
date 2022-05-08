@@ -7,6 +7,7 @@ in
   programs.fish = {
     enable = true;
     shellInit = ''
+      ${pkgs.z-lua}/bin/z.lua --init fish | source
       fish_add_path -a ~/.rd/bin
       fish_add_path ~/.local/bin
       set fish_greeting
@@ -37,16 +38,16 @@ in
       set fish_pager_color_description B3A06D
       set fish_pager_color_selected_background --background=E6B450
     '';
-    #plugins = [
-    #  {
-    #    name = "nix-env";
-    #    src = pkgs.fetchFromGitHub {
-    #      owner = "lilyball";
-    #      repo = "nix-env.fish";
-    #      rev = "7b65bd228429e852c8fdfa07601159130a818cfa";
-    #      sha256 = "069ybzdj29s320wzdyxqjhmpm9ir5815yx6n522adav0z2nz8vs4";
-    #    };
-    #  }
-    #];
+    plugins = [
+      {
+        name = "nix-env";
+        src = pkgs.fetchFromGitHub {
+          owner = "lilyball";
+          repo = "nix-env.fish";
+          rev = "7b65bd228429e852c8fdfa07601159130a818cfa";
+          sha256 = "069ybzdj29s320wzdyxqjhmpm9ir5815yx6n522adav0z2nz8vs4";
+        };
+      }
+    ];
   };
 }
