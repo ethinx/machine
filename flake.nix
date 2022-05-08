@@ -68,6 +68,7 @@
         configuration = {
           imports = [
             ./modules/home-manager.nix
+            ./darwin/shell.nix
             ./darwin/home.nix
           ];
         };

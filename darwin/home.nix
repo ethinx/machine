@@ -6,19 +6,27 @@ in
 {
   xdg.enable = true;
 
+  imports = [
+    ./shell.nix
+  ];
+
   home = {
     username = "${username}";
     homeDirectory = "${homePrefix system}/${username}";
 
     packages = with pkgs; [
+      fish
+      z-lua
+      fzf
+      neofetch
+
       go
+      nodejs
+      yarn
 
       git
       vim
       neovim
-
-      nodejs
-      yarn
 
       cmake
       ctags
@@ -26,20 +34,22 @@ in
 
       gh
       jq
-      fzf
       tree
+      ncdu
+      gnugrep
+      gnused
+      gawk
       watch
       ripgrep
       nmap
       mdbook
-      ncdu
       difftastic
+
       nixpkgs-fmt
 
       lima
       vagrant
 
-      z-lua
       chezmoi # dotfile manager
     ];
 

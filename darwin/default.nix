@@ -8,7 +8,6 @@ darwin.lib.darwinSystem rec {
   modules = [
     ./configuration.nix
     ./env.nix
-    ./shell.nix
 
     home-manager.darwinModules.home-manager
     {

@@ -4,11 +4,6 @@ let
   homePrefix = system: if isDarwin system then "/Users" else "/home";
 in
 {
-  users.users."${username}" = {
-    home = "${homePrefix system}/${username}";
-    shell = pkgs.fish;
-  };
-
   programs.fish = {
     enable = true;
     shellInit = ''
@@ -42,5 +37,16 @@ in
       set fish_pager_color_description B3A06D
       set fish_pager_color_selected_background --background=E6B450
     '';
+    #plugins = [
+    #  {
+    #    name = "nix-env";
+    #    src = pkgs.fetchFromGitHub {
+    #      owner = "lilyball";
+    #      repo = "nix-env.fish";
+    #      rev = "7b65bd228429e852c8fdfa07601159130a818cfa";
+    #      sha256 = "069ybzdj29s320wzdyxqjhmpm9ir5815yx6n522adav0z2nz8vs4";
+    #    };
+    #  }
+    #];
   };
 }
