@@ -1,5 +1,5 @@
 {
-  description = "Nix flake configuration for person machines";
+  description = "Nix flake configuration for personal machines";
 
   nixConfig = {
     substituters = [
