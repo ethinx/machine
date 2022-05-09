@@ -4,12 +4,16 @@ let
   homePrefix = system: if isDarwin system then "/Users" else "/home";
 in
 {
+  programs.fzf = {
+    enable = true;
+  };
   programs.fish = {
     enable = true;
     shellInit = ''
-      ${pkgs.z-lua}/bin/z.lua --init fish | source
+      #fish_add_path /etc/profiles/per-user/${username}/bin /run/current-system/sw/bin /nix/var/nix/profiles/default/bin
       fish_add_path -a ~/.rd/bin
       fish_add_path ~/.local/bin
+      ${pkgs.z-lua}/bin/z.lua --init fish | source
       set fish_greeting
       set fish_color_normal B3B1AD
       set fish_color_command 39BAE6
@@ -37,6 +41,29 @@ in
       set fish_pager_color_completion normal
       set fish_pager_color_description B3A06D
       set fish_pager_color_selected_background --background=E6B450
+    '';
+    interactiveShellInit = ''
+      export GOPATH=$HOME/repo/golang
+
+      function _repo
+          cd $HOME/repo
+      end
+
+      function _gopath
+          if test -z $argv[1]
+              cd $GOPATH/src
+          else
+              cd $GOPATH/src/$argv[1]
+          end
+      end
+
+      alias repo="_repo"
+      alias gopath="_gopath"
+      alias logseq="cd $HOME/Library/Mobile\ Documents/iCloud~com~logseq~logseq/Documents/logseq"
+      alias sls="cd $HOME/Library/Mobile\ Documents/iCloud~com~logseq~logseq/Documents/logseq && git add . && git commit -am 'sync'; git push"
+
+      export EDITOR=vim
+      export VISUAL=vim
     '';
     plugins = [
       {

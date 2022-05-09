@@ -35,6 +35,7 @@ in
       gh
       jq
       tree
+      pstree
       ncdu
       gnugrep
       gnused

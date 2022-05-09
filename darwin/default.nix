@@ -8,6 +8,7 @@ darwin.lib.darwinSystem rec {
   modules = [
     ./configuration.nix
     ./env.nix
+    #./shell.nix
 
     home-manager.darwinModules.home-manager
     {
@@ -20,4 +21,5 @@ darwin.lib.darwinSystem rec {
       home-manager.users.${username} = import ./home.nix;
     }
   ];
+
 }
