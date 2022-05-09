@@ -4,7 +4,9 @@ My nix flake configuration for personal machines, for macOS (nix-darwin) and non
 
 ## Inspiration
 [kclejeune/system](https://github.com/kclejeune/system.git)
+
 [MatthiasBenaets/nixos-config](https://github.com/MatthiasBenaets/nixos-config)
+
 [mitchellh/nixos-config](https://github.com/mitchellh/nixos-config)
 
 ## How-to
