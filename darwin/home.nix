@@ -8,6 +8,7 @@ in
 
   imports = [
     ./shell.nix
+    ./git.nix
   ];
 
   home = {
@@ -54,19 +55,5 @@ in
       chezmoi # dotfile manager
     ];
 
-  };
-
-  programs.git = {
-    enable = true;
-    extraConfig = {
-      init.defaultBranch = "main";
-
-      diff = {
-        tool = "difftastic";
-        external = "difft";
-      };
-
-      difftool.diffstatic.cmd = "difft $LOCAL $REMOTE";
-    };
   };
 }
