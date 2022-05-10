@@ -51,6 +51,8 @@ in
 
       lima
       vagrant
+      podman
+      qemu
 
       chezmoi # dotfile manager
     ];

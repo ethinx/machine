@@ -8,7 +8,6 @@ darwin.lib.darwinSystem rec {
   modules = [
     ./configuration.nix
     ./env.nix
-    #./shell.nix
 
     home-manager.darwinModules.home-manager
     {
@@ -18,7 +17,7 @@ darwin.lib.darwinSystem rec {
       # Pass arguments to home.nix
       # ref: https://nix-community.github.io/home-manager/index.html#sec-flakes-nix-darwin-module
       home-manager.extraSpecialArgs = { inherit username system; };
-      home-manager.users.${username} = import ./home.nix;
+      home-manager.users.${username} = import ../modules/home.nix;
     }
   ];
 
