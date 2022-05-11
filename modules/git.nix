@@ -20,11 +20,25 @@
 
     includes = [
       {
-        contents.user = {
-          name = "York Wong";
-          email = "yowang@flomesh.cn";
+        contents = {
+          user = {
+            name = "York Wong";
+            email = "yowang@flomesh.cn";
+          };
         };
-        condition = "gitdir:~/repo/flomesh-io";
+        condition = "gitdir:~/repo/flomesh-io/";
+      }
+      {
+        contents = {
+          user = {
+            name = "York Wong";
+            email = "yowang@flomesh.cn";
+          };
+          core = {
+            sshCommand = "ssh -i ~/.ssh/id_ed25519_nixff";
+          };
+        };
+        condition = "gitdir:~/repo/nixff/";
       }
     ];
   };
