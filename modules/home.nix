@@ -42,9 +42,11 @@ in
       gnused
       gawk
       watch
+      wget
       ripgrep
       nmap
       mdbook
+      manix
       difftastic
 
       nixpkgs-fmt

@@ -12,6 +12,7 @@
       };
 
       difftool.diffstatic.cmd = "difft $LOCAL $REMOTE";
+      pull.rebase = true;
     };
 
     userEmail = "eth2net@gmail.com";
