@@ -35,6 +35,7 @@ in
 
       gh
       jq
+      tokei
       tree
       pstree
       ncdu
@@ -55,6 +56,7 @@ in
       vagrant
       podman
       qemu
+      kube3d
 
       chezmoi # dotfile manager
     ];
