@@ -11,6 +11,12 @@ in
     ./git.nix
   ];
 
+  programs.vim = {
+    enable = true;
+    #packageConfigurable = pkgs.vim_configurable.override {
+    #};
+  };
+
   home = {
     username = "${username}";
     homeDirectory = "${homePrefix system}/${username}";
@@ -26,7 +32,7 @@ in
       yarn
 
       git
-      vim
+      #vim
       neovim
 
       cmake
