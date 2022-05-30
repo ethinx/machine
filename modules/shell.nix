@@ -12,7 +12,9 @@ in
     shellInit = ''
       #fish_add_path /etc/profiles/per-user/${username}/bin /run/current-system/sw/bin /nix/var/nix/profiles/default/bin
       fish_add_path -a ~/.rd/bin
-      fish_add_path ~/.local/bin
+      fish_add_path -a ~/.local/bin
+      fish_add_path -a ~/Library/Python/3.8/bin
+      fish_add_path -a ~/repo/golang/bin
       ${pkgs.z-lua}/bin/z.lua --init fish | source
       set fish_greeting
       set fish_color_normal B3B1AD
@@ -43,6 +45,7 @@ in
       set fish_pager_color_selected_background --background=E6B450
     '';
     interactiveShellInit = ''
+      export PKG_CONFIG_PATH=${pkgs.openssl.dev}/lib/pkgconfig
       export GOPATH=$HOME/repo/golang
 
       function _repo
@@ -61,6 +64,9 @@ in
       alias gopath="_gopath"
       alias logseq="cd $HOME/Library/Mobile\ Documents/iCloud~com~logseq~logseq/Documents/logseq"
       alias sls="cd $HOME/Library/Mobile\ Documents/iCloud~com~logseq~logseq/Documents/logseq && git add . && git commit -am 'sync'; git push"
+
+      alias vim="nvim"
+      alias vimdiff="nvim -d"
 
       export EDITOR=vim
       export VISUAL=vim

@@ -13,7 +13,21 @@ in
 
   programs.vim = {
     enable = true;
+    extraConfig = ''
+      set rtp+=~/.vim
+      source ~/.vim/vimrc
+    '';
+    plugins = [];
+    packageConfigurable = pkgs.vim_configurable.override {
+      guiSupport = "no";
+    };
     #packageConfigurable = pkgs.vim_configurable.override {
+    #  customize = {
+    #    vimrcConfig = {
+    #      customRC = ''
+    #      '';
+    #    };
+    #  };
     #};
   };
 
@@ -27,12 +41,17 @@ in
       fzf
       neofetch
 
-      go
+      go_1_18
+      lua
       nodejs
       yarn
 
+      cargo
+      pkg-config
+      openssl
+
       git
-      #vim
+      lazygit
       neovim
 
       cmake
@@ -40,7 +59,10 @@ in
       cscope
 
       gh
+      act
       jq
+      bat
+      xclip
       tokei
       tree
       pstree
@@ -50,11 +72,13 @@ in
       gawk
       watch
       wget
+      htop
       ripgrep
       nmap
       mdbook
       manix
       difftastic
+      stylua
 
       nixpkgs-fmt
 
