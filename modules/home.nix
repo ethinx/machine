@@ -17,7 +17,7 @@ in
       set rtp+=~/.vim
       source ~/.vim/vimrc
     '';
-    plugins = [];
+    plugins = [ ];
     packageConfigurable = pkgs.vim_configurable.override {
       guiSupport = "no";
     };
@@ -87,6 +87,8 @@ in
       podman
       qemu
       kube3d
+      kubernetes-helm
+      kind
 
       chezmoi # dotfile manager
     ];
