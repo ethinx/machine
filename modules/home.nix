@@ -89,6 +89,7 @@ in
       kube3d
       kubernetes-helm
       kind
+      kubectl
 
       chezmoi # dotfile manager
     ];
