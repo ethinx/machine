@@ -10,10 +10,6 @@ in
   programs.fish = {
     enable = true;
     shellInit = ''
-      fish_add_path -mP ~/repo/golang/bin
-      fish_add_path -mP ~/.local/bin
-      fish_add_path -a ~/Library/Python/3.8/bin
-      fish_add_path -a ~/.rd/bin
       #fish_add_path /etc/profiles/per-user/${username}/bin /run/current-system/sw/bin /nix/var/nix/profiles/default/bin
       ${pkgs.z-lua}/bin/z.lua --init fish | source
       set fish_greeting
@@ -45,6 +41,10 @@ in
       set fish_pager_color_selected_background --background=E6B450
     '';
     interactiveShellInit = ''
+      fish_add_path -mP ~/repo/golang/bin
+      fish_add_path -mP ~/.local/bin
+      fish_add_path -a ~/Library/Python/3.8/bin
+      fish_add_path -a ~/.rd/bin
       export PKG_CONFIG_PATH=${pkgs.openssl.dev}/lib/pkgconfig
       export GOPATH=$HOME/repo/golang
 
