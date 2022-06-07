@@ -92,6 +92,7 @@ in
       kubectl
 
       chezmoi # dotfile manager
+      wireguard-tools
     ];
 
   };
