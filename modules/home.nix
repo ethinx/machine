@@ -93,6 +93,9 @@ in
 
       chezmoi # dotfile manager
       wireguard-tools
+      wireguard-go
+
+      terraform
     ];
 
   };

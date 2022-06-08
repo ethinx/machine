@@ -9,6 +9,7 @@
     trusted-substituters = [
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
     ];
+    trusted-users = "root,ethinx";
   };
 
   inputs = {
