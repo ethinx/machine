@@ -36,6 +36,8 @@ in
     homeDirectory = "${homePrefix system}/${username}";
 
     packages = with pkgs; [
+      nix-index
+
       fish
       z-lua
       fzf
@@ -67,6 +69,7 @@ in
       tree
       pstree
       ncdu
+      coreutils
       gnugrep
       gnused
       gawk

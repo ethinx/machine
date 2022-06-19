@@ -3,7 +3,7 @@ let
   isDarwin = system: (builtins.elem system pkgs.lib.platforms.darwin);
   homePrefix = system: if isDarwin system then "/Users" else "/home";
 in
-  {
+{
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
@@ -18,10 +18,16 @@ in
   services.nix-daemon.enable = true;
   # nix.package = pkgs.nix;
   #nix.package = pkgs.nixFlakes;
+  nixpkgs = {
+    config = {
+      allowBroken = false;
+    };
+  };
   nix = {
     package = pkgs.nix;
     binaryCaches = [ "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store" ];
-    gc = {                                # Garbage collection
+    gc = {
+      # Garbage collection
       automatic = true;
       interval.Day = 7;
       options = "--delete-older-than 15d";
@@ -30,6 +36,7 @@ in
       auto-optimise-store = true
       experimental-features = nix-command flakes
     '';
+    trustedUsers = [ "${username}" "root" "@admin" "@wheel" ];
   };
 
   # Create /etc/bashrc that loads the nix-darwin environment.
@@ -44,5 +51,4 @@ in
     home = "${homePrefix system}/${username}";
     shell = pkgs.fish;
   };
-
 }
