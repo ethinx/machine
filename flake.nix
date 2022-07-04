@@ -74,5 +74,20 @@
           ];
         };
       };
+
+      homeConfigurations.linux-amd64 = home-manager.lib.homeManagerConfiguration rec {
+        system = "x86_64-linux";
+        username = "ethinx";
+        homeDirectory = "/home/${username}";
+        extraSpecialArgs = { inherit inputs nixpkgs system username; };
+
+        configuration = {
+          imports = [
+            ./modules/home-manager.nix
+            ./modules/shell.nix
+            ./modules/home.nix
+          ];
+        };
+      };
     };
 }
