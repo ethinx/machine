@@ -20,7 +20,7 @@ in
   #nix.package = pkgs.nixFlakes;
   nixpkgs = {
     config = {
-      allowBroken = false;
+      allowBroken = true;
     };
   };
   nix = {

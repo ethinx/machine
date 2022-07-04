@@ -53,6 +53,7 @@ in
       openssl
 
       git
+      git-crypt
       lazygit
       neovim
 
@@ -99,6 +100,8 @@ in
       wireguard-go
 
       terraform
+      packer
+      cdrtools # for libvirt provider
     ];
 
   };

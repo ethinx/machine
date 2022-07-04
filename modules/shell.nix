@@ -42,6 +42,7 @@ in
     '';
     interactiveShellInit = ''
       fish_add_path -mP ~/repo/golang/bin
+      fish_add_path -mP ~/.cargo/bin
       fish_add_path -mP ~/.local/bin
       fish_add_path -a ~/Library/Python/3.8/bin
       fish_add_path -a ~/.rd/bin
