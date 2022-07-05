@@ -44,6 +44,8 @@ in
       neofetch
 
       protobuf
+      protoc-gen-go
+      protoc-gen-go-grpc
       go_1_18
       lua
       nodejs
