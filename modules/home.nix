@@ -54,6 +54,7 @@ in
       cargo
       pkg-config
       openssl
+      cfssl
 
       git
       git-crypt
