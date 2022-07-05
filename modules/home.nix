@@ -43,6 +43,7 @@ in
       fzf
       neofetch
 
+      protobuf
       go_1_18
       lua
       nodejs
