@@ -111,6 +111,7 @@ in
       # otherwise may encounter issue 'libstdc++.so.6 Cannot open shared object or file: No such file or directory'
       gcc
       tmux
+      ansible
     ];
 
   };
