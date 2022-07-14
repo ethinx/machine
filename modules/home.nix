@@ -88,6 +88,10 @@ in
       difftastic
       stylua
 
+      grpcurl
+      websocat
+
+
       nixpkgs-fmt
 
       lima
