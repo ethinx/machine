@@ -48,6 +48,7 @@ in
       fish_add_path -a ~/.rd/bin
       export PKG_CONFIG_PATH=${pkgs.openssl.dev}/lib/pkgconfig
       export GOPATH=$HOME/repo/golang
+      export CGO_ENABLED=0
 
       function _repo
           cd $HOME/repo

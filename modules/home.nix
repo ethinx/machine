@@ -50,6 +50,8 @@ in
       lua
       nodejs
       yarn
+      # nodePackages.gatsby-cli
+      # nodePackages.node-gyp-build
 
       cargo
       pkg-config
@@ -100,6 +102,7 @@ in
       qemu
       kube3d
       kubernetes-helm
+      chart-testing
       kind
       kubectl
 
