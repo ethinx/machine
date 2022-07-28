@@ -92,7 +92,7 @@ in
 
       grpcurl
       websocat
-
+      k6
 
       nixpkgs-fmt
 
