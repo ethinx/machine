@@ -95,6 +95,7 @@ in
       k6
 
       nixpkgs-fmt
+      node2nix
 
       lima
       vagrant
