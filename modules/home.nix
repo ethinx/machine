@@ -82,6 +82,7 @@ in
       gawk
       watch
       wget
+      s3cmd
       htop
       ripgrep
       nmap
