@@ -53,7 +53,7 @@ in
       # nodePackages.gatsby-cli
       # nodePackages.node-gyp-build
 
-      cargo
+      rustup
       pkg-config
       openssl
       cfssl
