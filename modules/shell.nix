@@ -10,7 +10,7 @@ in
   programs.fish = {
     enable = true;
     shellInit = ''
-      #fish_add_path /etc/profiles/per-user/${username}/bin /run/current-system/sw/bin /nix/var/nix/profiles/default/bin
+      fish_add_path /etc/profiles/per-user/${username}/bin /run/current-system/sw/bin /nix/var/nix/profiles/default/bin
       ${pkgs.z-lua}/bin/z.lua --init fish | source
       set fish_greeting
       set fish_color_normal B3B1AD
