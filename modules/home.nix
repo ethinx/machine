@@ -90,6 +90,7 @@ in
       manix
       difftastic
       stylua
+      graphviz
 
       grpcurl
       websocat
@@ -103,6 +104,7 @@ in
       podman
       qemu
       kube3d
+      k3sup
       kubernetes-helm
       chart-testing
       kind
