@@ -109,6 +109,7 @@ in
       chart-testing
       kind
       kubectl
+      awscli
 
       chezmoi # dotfile manager
       wireguard-tools

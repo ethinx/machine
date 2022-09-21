@@ -72,6 +72,10 @@ in
 
       export EDITOR=vim
       export VISUAL=vim
+
+      if test -f $HOME/.fishrc
+        source $HOME/.fishrc
+      end
     '';
     plugins = [
       {
