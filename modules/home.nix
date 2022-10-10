@@ -58,6 +58,7 @@ in
       openssl
       cfssl
 
+      kitty
       git
       git-crypt
       lazygit

@@ -39,6 +39,11 @@ in
       set fish_pager_color_completion normal
       set fish_pager_color_description B3A06D
       set fish_pager_color_selected_background --background=E6B450
+
+      if [ $TERM = "xterm-kitty" ]
+        alias ssh="kitty +kitten ssh"
+      end
+
     '';
     interactiveShellInit = ''
       fish_add_path -mP ~/repo/golang/bin
