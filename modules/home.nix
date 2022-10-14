@@ -111,6 +111,7 @@ in
       kind
       kubectl
       awscli
+      azure-cli
 
       chezmoi # dotfile manager
       wireguard-tools
