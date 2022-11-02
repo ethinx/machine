@@ -2,14 +2,14 @@
   description = "Nix flake configuration for personal machines";
 
   nixConfig = {
-    substituters = [
-      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
-      "https://cache.nixos.org"
-    ];
     trusted-substituters = [
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
     ];
     trusted-users = "root,ethinx";
+    substituters = [
+      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+      "https://cache.nixos.org"
+    ];
   };
 
   inputs = {
@@ -22,7 +22,7 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-21.11";
+      url = "github:nix-community/home-manager/release-22.05";
       # We want home-manager to use the same set of nixpkgs as our system.
       inputs.nixpkgs.follows = "nixpkgs";
     };
