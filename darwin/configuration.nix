@@ -25,7 +25,6 @@ in
   };
   nix = {
     package = pkgs.nix;
-    binaryCaches = [ "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store" ];
     gc = {
       # Garbage collection
       automatic = true;
@@ -36,7 +35,10 @@ in
       auto-optimise-store = true
       experimental-features = nix-command flakes
     '';
-    trustedUsers = [ "${username}" "root" "@admin" "@wheel" ];
+    settings = {
+      substituters = [ "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store" ];
+      trusted-users = [ "${username}" "root" "@admin" "@wheel" ];
+    };
   };
 
   # Create /etc/bashrc that loads the nix-darwin environment.
