@@ -60,6 +60,7 @@ in
 
       kitty
       git
+      bfg-repo-cleaner
       git-crypt
       lazygit
       neovim
