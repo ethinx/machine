@@ -42,6 +42,7 @@ in
       z-lua
       fzf
       neofetch
+      gettext
 
       protobuf
       protoc-gen-go
