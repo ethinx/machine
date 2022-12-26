@@ -47,10 +47,12 @@ in
       protobuf
       protoc-gen-go
       protoc-gen-go-grpc
-      go_1_18
+      go_1_19
+      goreleaser
       lua
       nodejs
       yarn
+      pdm
       # nodePackages.gatsby-cli
       # nodePackages.node-gyp-build
 
@@ -70,6 +72,7 @@ in
       ctags
       cscope
 
+      tldr
       gh
       act
       jq
@@ -122,6 +125,10 @@ in
       terraform
       packer
       cdrtools # for libvirt provider
+      aria
+      cabextract
+      wimlib
+      chntpw
     ] ++ lib.optionals pkgs.stdenvNoCC.isLinux [
       # neovim need tree-sitter, when tree-sitter compile plugins, we need to use gcc in the nixpkgs
       # otherwise may encounter issue 'libstdc++.so.6 Cannot open shared object or file: No such file or directory'
