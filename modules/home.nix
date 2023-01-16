@@ -91,6 +91,8 @@ in
       s3cmd
       htop
       ripgrep
+      igrep
+      lnav
       nmap
       mdbook
       manix
