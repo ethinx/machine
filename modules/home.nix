@@ -50,7 +50,7 @@ in
       go_1_19
       goreleaser
       lua
-      nodejs
+      nodejs-16_x
       yarn
       pdm
       # nodePackages.gatsby-cli
