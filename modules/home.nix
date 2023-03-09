@@ -11,25 +11,25 @@ in
     ./git.nix
   ];
 
-  programs.vim = {
-    enable = true;
-    extraConfig = ''
-      set rtp+=~/.vim
-      source ~/.vim/vimrc
-    '';
-    plugins = [ ];
-    packageConfigurable = pkgs.vim_configurable.override {
-      guiSupport = "no";
-    };
-    #packageConfigurable = pkgs.vim_configurable.override {
-    #  customize = {
-    #    vimrcConfig = {
-    #      customRC = ''
-    #      '';
-    #    };
-    #  };
-    #};
-  };
+  #programs.vim = {
+  #  enable = true;
+  #  extraConfig = ''
+  #    set rtp+=~/.vim
+  #    source ~/.vim/vimrc
+  #  '';
+  #  plugins = [ ];
+  #  packageConfigurable = pkgs.vim_configurable.override {
+  #    guiSupport = "no";
+  #  };
+  #  #packageConfigurable = pkgs.vim_configurable.override {
+  #  #  customize = {
+  #  #    vimrcConfig = {
+  #  #      customRC = ''
+  #  #      '';
+  #  #    };
+  #  #  };
+  #  #};
+  #};
 
   home = {
     username = "${username}";
@@ -107,7 +107,6 @@ in
       nixpkgs-fmt
       node2nix
 
-      lima
       vagrant
       podman
       qemu
@@ -131,12 +130,17 @@ in
       cabextract
       wimlib
       chntpw
+
+      rename
+      goreleaser
     ] ++ lib.optionals pkgs.stdenvNoCC.isLinux [
       # neovim need tree-sitter, when tree-sitter compile plugins, we need to use gcc in the nixpkgs
       # otherwise may encounter issue 'libstdc++.so.6 Cannot open shared object or file: No such file or directory'
       gcc
       tmux
       ansible
+    ] ++ lib.optionals pkgs.stdenvNoCC.isDarwin [
+      lima
     ];
 
   };
