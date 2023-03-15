@@ -11,6 +11,23 @@ in
     ./git.nix
   ];
 
+  programs.tmux = {
+    enable = true;
+    # tmuxp.enable = true;
+    plugins = with pkgs; [
+      tmuxPlugins.sensible
+      {
+        plugin = tmuxPlugins.continuum;
+        extraConfig = ''
+          set -g @continuum-restore 'on'
+        '';
+      }
+      {
+        plugin = tmuxPlugins.resurrect;
+      }
+    ];
+  };
+
   #programs.vim = {
   #  enable = true;
   #  extraConfig = ''
@@ -137,6 +154,7 @@ in
       you-get
       mediainfo
       tmux
+      # tmuxp
       ansible
     ] ++ lib.optionals pkgs.stdenvNoCC.isLinux [
       # neovim need tree-sitter, when tree-sitter compile plugins, we need to use gcc in the nixpkgs
