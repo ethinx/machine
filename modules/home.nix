@@ -133,12 +133,17 @@ in
 
       rename
       goreleaser
+
+      you-get
+      mediainfo
+      tmux
     ] ++ lib.optionals pkgs.stdenvNoCC.isLinux [
       # neovim need tree-sitter, when tree-sitter compile plugins, we need to use gcc in the nixpkgs
       # otherwise may encounter issue 'libstdc++.so.6 Cannot open shared object or file: No such file or directory'
       gcc
-      tmux
       ansible
+
+      ffmpeg-full
     ] ++ lib.optionals pkgs.stdenvNoCC.isDarwin [
       lima
     ];
