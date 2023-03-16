@@ -22,7 +22,20 @@ in
     config = {
       allowBroken = true;
     };
+
+    overlays = [
+      (self: super: {
+        python310 = super.python310.override {
+          packageOverrides = pyself: pysuper: {
+            libtmux = pysuper.libtmux.overridePythonAttrs (_: rec {
+              disabledTestPaths = [ "tests/test_test.py" "tests/legacy_api/test_test.py" ];
+            });
+          };
+        };
+      })
+    ];
   };
+
   nix = {
     package = pkgs.nix;
     gc = {

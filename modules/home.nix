@@ -13,7 +13,7 @@ in
 
   programs.tmux = {
     enable = true;
-    # tmuxp.enable = true;
+    tmuxp.enable = true;
     plugins = with pkgs; [
       tmuxPlugins.sensible
       {
@@ -27,26 +27,6 @@ in
       }
     ];
   };
-
-  #programs.vim = {
-  #  enable = true;
-  #  extraConfig = ''
-  #    set rtp+=~/.vim
-  #    source ~/.vim/vimrc
-  #  '';
-  #  plugins = [ ];
-  #  packageConfigurable = pkgs.vim_configurable.override {
-  #    guiSupport = "no";
-  #  };
-  #  #packageConfigurable = pkgs.vim_configurable.override {
-  #  #  customize = {
-  #  #    vimrcConfig = {
-  #  #      customRC = ''
-  #  #      '';
-  #  #    };
-  #  #  };
-  #  #};
-  #};
 
   home = {
     username = "${username}";
@@ -154,7 +134,6 @@ in
       you-get
       mediainfo
       tmux
-      # tmuxp
       ansible
     ] ++ lib.optionals pkgs.stdenvNoCC.isLinux [
       # neovim need tree-sitter, when tree-sitter compile plugins, we need to use gcc in the nixpkgs
