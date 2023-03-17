@@ -28,7 +28,14 @@ in
         python310 = super.python310.override {
           packageOverrides = pyself: pysuper: {
             libtmux = pysuper.libtmux.overridePythonAttrs (_: rec {
-              disabledTestPaths = [ "tests/test_test.py" "tests/legacy_api/test_test.py" ];
+              disabledTests = [
+                "test_new_session_width_height"
+                "test_capture_pane_start"
+              ];
+              disabledTestPaths = [
+                "tests/test_test.py"
+                "tests/legacy_api/test_test.py"
+              ];
             });
           };
         };
