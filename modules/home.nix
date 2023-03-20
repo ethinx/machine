@@ -9,24 +9,8 @@ in
   imports = [
     ./shell.nix
     ./git.nix
+    ./tmux.nix
   ];
-
-  programs.tmux = {
-    enable = true;
-    tmuxp.enable = true;
-    plugins = with pkgs; [
-      tmuxPlugins.sensible
-      {
-        plugin = tmuxPlugins.continuum;
-        extraConfig = ''
-          set -g @continuum-restore 'on'
-        '';
-      }
-      {
-        plugin = tmuxPlugins.resurrect;
-      }
-    ];
-  };
 
   nixpkgs.overlays = [
     (self: super: {
