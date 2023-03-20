@@ -136,6 +136,7 @@ in
       you-get
       mediainfo
       tmux
+      smug
       ansible
     ] ++ lib.optionals pkgs.stdenvNoCC.isLinux [
       # neovim need tree-sitter, when tree-sitter compile plugins, we need to use gcc in the nixpkgs
