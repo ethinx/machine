@@ -10,7 +10,7 @@ in
   programs.fish = {
     enable = true;
     shellInit = ''
-      fish_add_path /etc/profiles/per-user/${username}/bin /run/current-system/sw/bin /nix/var/nix/profiles/default/bin /usr/sbin
+      fish_add_path /etc/profiles/per-user/${username}/bin /run/current-system/sw/bin /nix/var/nix/profiles/default/bin /usr/sbin ~/.local/bin
       ${pkgs.z-lua}/bin/z.lua --init fish | source
       set fish_greeting
       set fish_color_normal B3B1AD
@@ -40,9 +40,9 @@ in
       set fish_pager_color_description B3A06D
       set fish_pager_color_selected_background --background=E6B450
 
-      if [ $TERM = "xterm-kitty" ]
-        alias ssh="kitty +kitten ssh"
-      end
+      # if [ $TERM = "xterm-kitty" ]
+      #   alias ssh="kitty +kitten ssh"
+      # end
 
     '';
     interactiveShellInit = ''
