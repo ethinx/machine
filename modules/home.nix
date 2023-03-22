@@ -52,6 +52,7 @@ in
       nodejs-16_x
       yarn
       pdm
+      virtualenv
       # nodePackages.gatsby-cli
       # nodePackages.node-gyp-build
 
