@@ -6,6 +6,8 @@ in
 {
   xdg.enable = true;
 
+  home.stateVersion = "22.11";
+
   imports = [
     ./shell.nix
     ./git.nix
@@ -46,7 +48,7 @@ in
       protobuf
       protoc-gen-go
       protoc-gen-go-grpc
-      go_1_19
+      go
       goreleaser
       lua
       nodejs-16_x
@@ -153,7 +155,7 @@ in
 
       ffmpeg-full
     ] ++ lib.optionals pkgs.stdenvNoCC.isDarwin [
-      lima
+      # lima
     ];
 
   };
