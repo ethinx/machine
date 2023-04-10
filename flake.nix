@@ -46,48 +46,49 @@
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, darwin, flake-utils, ... }@inputs:
     let
       inherit (flake-utils.lib) eachDefaultSystem eachSystem;
+      username = "ethinx";
     in
     {
       darwinConfigurations.macos-amd64 = import ./darwin {
-        inherit inputs nixpkgs nixpkgs-unstable home-manager darwin;
+        inherit inputs nixpkgs nixpkgs-unstable home-manager darwin username;
         system = "x86_64-darwin";
-        username = "ethinx";
       };
 
       darwinConfigurations.macos-arm64 = import ./darwin {
-        inherit inputs nixpkgs nixpkgs-unstable home-manager darwin;
+        inherit inputs nixpkgs nixpkgs-unstable home-manager darwin username;
         system = "aarch64-darwin";
-        username = "ethinx";
       };
 
       homeConfigurations.linux-arm64 = home-manager.lib.homeManagerConfiguration rec {
-        system = "aarch64-linux";
-        username = "ethinx";
-        homeDirectory = "/home/${username}";
-        extraSpecialArgs = { inherit inputs nixpkgs system username; };
-
-        configuration = {
-          imports = [
-            ./modules/home-manager.nix
-            ./modules/shell.nix
-            ./modules/home.nix
-          ];
-        };
+        pkgs = nixpkgs.legacyPackages.aarch64-linux;
+        extraSpecialArgs = { inherit inputs nixpkgs username; } // { system = "aarch64-linux"; };
+        modules = [
+          ./modules/home-manager.nix
+          ./modules/shell.nix
+          ./modules/home.nix
+          {
+            home = {
+              username = "${username}";
+              homeDirectory = "/home/${username}";
+            };
+          }
+        ];
       };
 
       homeConfigurations.linux-amd64 = home-manager.lib.homeManagerConfiguration rec {
-        system = "x86_64-linux";
-        username = "ethinx";
-        homeDirectory = "/home/${username}";
-        extraSpecialArgs = { inherit inputs nixpkgs system username; };
-
-        configuration = {
-          imports = [
-            ./modules/home-manager.nix
-            ./modules/shell.nix
-            ./modules/home.nix
-          ];
-        };
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        extraSpecialArgs = { inherit inputs nixpkgs username; } // { system = "x86_64-linux"; };
+        modules = [
+          ./modules/home-manager.nix
+          ./modules/shell.nix
+          ./modules/home.nix
+          {
+            home = {
+              username = "${username}";
+              homeDirectory = "/home/${username}";
+            };
+          }
+        ];
       };
     };
 }
