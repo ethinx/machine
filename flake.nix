@@ -47,6 +47,10 @@
     let
       inherit (flake-utils.lib) eachDefaultSystem eachSystem;
       username = "ethinx";
+      linuxHome = {
+        username = "${username}";
+        homeDirectory = "/home/${username}";
+      };
     in
     {
       darwinConfigurations.macos-amd64 = import ./darwin {
@@ -67,10 +71,7 @@
           ./modules/shell.nix
           ./modules/home.nix
           {
-            home = {
-              username = "${username}";
-              homeDirectory = "/home/${username}";
-            };
+            home = linuxHome;
           }
         ];
       };
@@ -83,10 +84,7 @@
           ./modules/shell.nix
           ./modules/home.nix
           {
-            home = {
-              username = "${username}";
-              homeDirectory = "/home/${username}";
-            };
+            home = linuxHome;
           }
         ];
       };
