@@ -49,6 +49,7 @@ in
       protoc-gen-go
       protoc-gen-go-grpc
       go
+      gotools
       goreleaser
       lua
       nodejs-16_x
@@ -155,7 +156,11 @@ in
 
       ffmpeg-full
     ] ++ lib.optionals pkgs.stdenvNoCC.isDarwin [
+      gnutar
+      pandoc
+      hugo
       # lima
+      # gpredict
     ];
 
   };
