@@ -14,6 +14,8 @@ in
     ./tmux.nix
   ];
 
+  nixpkgs.config.permittedInsecurePackages = [ "nodejs-16.20.0" ];
+
   nixpkgs.overlays = [
     (self: super: {
       python310 = super.python310.override {
@@ -30,6 +32,15 @@ in
           });
         };
       };
+      neovim-unwrapped = super.neovim-unwrapped.overrideAttrs (oldAttrs: {
+        src = super.fetchFromGitHub {
+          owner = "neovim";
+          repo = "neovim";
+          rev = "07883940b2294e0ab32fb58e6624d18d9dd1715a";
+          sha256 = "sha256-Uo8HJ5j33mzgfrpK2zo0N/vgzTFG8KhMBE4+M1C9oCo=";
+        };
+        patches = [ ];
+      });
     })
   ];
   home = {

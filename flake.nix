@@ -3,11 +3,11 @@
 
   nixConfig = {
     trusted-substituters = [
-      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+      # "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
     ];
     trusted-users = "root,ethinx";
     substituters = [
-      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+      # "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
       "https://cache.nixos.org"
     ];
   };
@@ -78,7 +78,7 @@
 
       homeConfigurations.linux-amd64 = home-manager.lib.homeManagerConfiguration rec {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = { inherit inputs nixpkgs username; } // { system = "x86_64-linux"; };
+        extraSpecialArgs = { inherit inputs nixpkgs nixpkgs-unstable username; } // { system = "x86_64-linux"; };
         modules = [
           ./modules/home-manager.nix
           ./modules/shell.nix

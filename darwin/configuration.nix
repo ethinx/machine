@@ -39,6 +39,12 @@ in
             });
           };
         };
+        neovim = super.neovim.overrideAttrs (oldAttrs: {
+          src = super.fetchurl {
+            url = "https://github.com/neovim/neovim/archive/refs/heads/master.zip";
+            sha256 = "xxx";
+          };
+        });
       })
     ];
   };
