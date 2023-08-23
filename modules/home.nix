@@ -61,7 +61,7 @@ in
           src = super.fetchFromGitHub {
             owner = "neovim";
             repo = "neovim";
-            rev = "07883940b2294e0ab32fb58e6624d18d9dd1715a";
+            rev = "908f247c224db88ffd25e207314d41031519b128";
             sha256 = "sha256-Uo8HJ5j33mzgfrpK2zo0N/vgzTFG8KhMBE4+M1C9oCo=";
           };
           patches = [ ];
