@@ -61,8 +61,8 @@ in
           src = super.fetchFromGitHub {
             owner = "neovim";
             repo = "neovim";
-            rev = "908f247c224db88ffd25e207314d41031519b128";
-            sha256 = "sha256-Uo8HJ5j33mzgfrpK2zo0N/vgzTFG8KhMBE4+M1C9oCo=";
+            rev = "767b96864776d848e6c2a0cd9aa1d890c1066f91";
+            sha256 = "sha256-CXYSqHqTnzrBBJCfTeNphQDmzn+XCJQUExZyKYN5kwg=";
           };
           patches = [ ];
           nativeBuildInputs = oldAttrs.nativeBuildInputs ++ super.lib.optionals pkgs.stdenvNoCC.isDarwin [
@@ -158,7 +158,7 @@ in
       kind
       kubectl
       awscli
-      azure-cli
+      #azure-cli
 
       chezmoi # dotfile manager
       wireguard-tools
