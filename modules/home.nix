@@ -15,6 +15,7 @@ in
   ];
 
   nixpkgs.config.permittedInsecurePackages = [ "nodejs-16.20.2" ];
+  nixpkgs.config.allowUnfree = true;
 
   nixpkgs.overlays = [
     (self: super: {
