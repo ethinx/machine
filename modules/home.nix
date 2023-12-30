@@ -14,7 +14,7 @@ in
     ./tmux.nix
   ];
 
-  nixpkgs.config.permittedInsecurePackages = [ "nodejs-16.20.2" ];
+  # nixpkgs.config.permittedInsecurePackages = [ "nodejs-16.20.2" ];
   nixpkgs.config.allowUnfree = true;
 
   nixpkgs.overlays = [
@@ -93,7 +93,8 @@ in
       gotools
       goreleaser
       lua
-      nodejs-16_x
+      # nodejs-16_x
+      nodejs
       yarn
       # nodePackages.gatsby-cli
       # nodePackages.node-gyp-build
@@ -149,7 +150,7 @@ in
       nixpkgs-fmt
       node2nix
 
-      vagrant
+      # vagrant
       podman
       qemu
       kube3d
