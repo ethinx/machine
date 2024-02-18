@@ -62,7 +62,7 @@ in
           src = super.fetchFromGitHub {
             owner = "neovim";
             repo = "neovim";
-            rev = "767b96864776d848e6c2a0cd9aa1d890c1066f91";
+            rev = "b12d193b4a68242fb0c7e4f924c8abce3488e1c8";
             sha256 = "sha256-CXYSqHqTnzrBBJCfTeNphQDmzn+XCJQUExZyKYN5kwg=";
           };
           patches = [ ];
@@ -171,7 +171,6 @@ in
       cdrtools # for libvirt provider
       aria
       cabextract
-      wimlib
       chntpw
 
       rename
@@ -198,6 +197,8 @@ in
       # neovim need tree-sitter, when tree-sitter compile plugins, we need to use gcc in the nixpkgs
       # otherwise may encounter issue 'libstdc++.so.6 Cannot open shared object or file: No such file or directory'
       gcc
+
+      wimlib # depends on fuse3 and it does not support darwin
 
       ffmpeg-full
     ] ++ lib.optionals pkgs.stdenvNoCC.isDarwin [
