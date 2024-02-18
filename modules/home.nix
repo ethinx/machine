@@ -124,7 +124,7 @@ in
       tokei
       tree
       pstree
-      # ncdu
+      ncdu
       coreutils
       gnugrep
       gnused
