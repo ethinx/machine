@@ -183,6 +183,9 @@ in
       smug
       ansible
 
+      restic
+      rclone
+
       # pdm
       # onnxruntime
       # python310Full
