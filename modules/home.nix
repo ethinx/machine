@@ -181,11 +181,14 @@ in
       mediainfo
       tmux
       smug
-      ansible
+      # ansible
+      # python310Packages.lxml
+      # python311Packages.lxml
 
       restic
       rclone
 
+      ninja
       # pdm
       # onnxruntime
       # python310Full

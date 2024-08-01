@@ -12,7 +12,7 @@
       };
 
       difftool.diffstatic.cmd = "difft $LOCAL $REMOTE";
-      pull.rebase = true;
+      # pull.rebase = true;
     };
 
     userEmail = "965612+ethinx@users.noreply.github.com";
