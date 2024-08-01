@@ -63,7 +63,7 @@ in
             owner = "neovim";
             repo = "neovim";
             rev = "b12d193b4a68242fb0c7e4f924c8abce3488e1c8";
-            sha256 = "sha256-CXYSqHqTnzrBBJCfTeNphQDmzn+XCJQUExZyKYN5kwg=";
+            sha256 = "sha256-HYjgX66AVMqG6jxl83O8NzZyUkULZJv3PRaXw9jgR1o=";
           };
           patches = [ ];
           nativeBuildInputs = oldAttrs.nativeBuildInputs ++ super.lib.optionals pkgs.stdenvNoCC.isDarwin [
@@ -96,6 +96,7 @@ in
       # nodejs-16_x
       nodejs
       yarn
+      nodePackages.wrangler
       # nodePackages.gatsby-cli
       # nodePackages.node-gyp-build
 
