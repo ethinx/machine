@@ -96,7 +96,7 @@ in
       # nodejs-16_x
       nodejs
       yarn
-      nodePackages.wrangler
+      # nodePackages.wrangler
       # nodePackages.gatsby-cli
       # nodePackages.node-gyp-build
 
