@@ -116,6 +116,8 @@ in
       ctags
       cscope
 
+      gnupg
+
       tldr
       gh
       act
