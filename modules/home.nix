@@ -33,44 +33,44 @@ in
           });
         };
       };
-      neovim-unwrapped =
-        let
-          # https://github.com/NixOS/nixpkgs/issues/229275#issuecomment-1532921108
-          liblpeg = super.stdenv.mkDerivation
-            {
-              pname = "liblpeg";
-              inherit (super.luajitPackages.lpeg) version meta src;
-
-              buildInputs = [ super.luajit ];
-
-              buildPhase = ''
-                sed -i makefile -e "s/CC = gcc/CC = clang/"
-                sed -i makefile -e "s/-bundle/-dynamiclib/"
-
-                make macosx
-              '';
-
-              installPhase = ''
-                mkdir -p $out/lib
-                mv lpeg.so $out/lib/lpeg.dylib
-              '';
-
-              nativeBuildInputs = [ super.fixDarwinDylibNames ];
-            };
-        in
-        super.neovim-unwrapped.overrideAttrs (oldAttrs: rec {
-          src = super.fetchFromGitHub {
-            owner = "neovim";
-            repo = "neovim";
-            rev = "b12d193b4a68242fb0c7e4f924c8abce3488e1c8";
-            sha256 = "sha256-HYjgX66AVMqG6jxl83O8NzZyUkULZJv3PRaXw9jgR1o=";
-          };
-          patches = [ ];
-          nativeBuildInputs = oldAttrs.nativeBuildInputs ++ super.lib.optionals pkgs.stdenvNoCC.isDarwin [
-            liblpeg
-            super.libiconv
-          ];
-        });
+      # neovim-unwrapped =
+      #   let
+      #     # https://github.com/NixOS/nixpkgs/issues/229275#issuecomment-1532921108
+      #     liblpeg = super.stdenv.mkDerivation
+      #       {
+      #         pname = "liblpeg";
+      #         inherit (super.luajitPackages.lpeg) version meta src;
+      #
+      #         buildInputs = [ super.luajit ];
+      #
+      #         buildPhase = ''
+      #           sed -i makefile -e "s/CC = gcc/CC = clang/"
+      #           sed -i makefile -e "s/-bundle/-dynamiclib/"
+      #
+      #           make macosx
+      #         '';
+      #
+      #         installPhase = ''
+      #           mkdir -p $out/lib
+      #           mv lpeg.so $out/lib/lpeg.dylib
+      #         '';
+      #
+      #         nativeBuildInputs = [ super.fixDarwinDylibNames ];
+      #       };
+      #   in
+      #   super.neovim-unwrapped.overrideAttrs (oldAttrs: rec {
+      #     src = super.fetchFromGitHub {
+      #       owner = "neovim";
+      #       repo = "neovim";
+      #       rev = "b12d193b4a68242fb0c7e4f924c8abce3488e1c8";
+      #       sha256 = "sha256-HYjgX66AVMqG6jxl83O8NzZyUkULZJv3PRaXw9jgR1o=";
+      #     };
+      #     patches = [ ];
+      #     nativeBuildInputs = oldAttrs.nativeBuildInputs ++ super.lib.optionals pkgs.stdenvNoCC.isDarwin [
+      #       liblpeg
+      #       super.libiconv
+      #     ];
+      #   });
     })
   ];
   home = {
