@@ -138,7 +138,7 @@ in
       htop
       ripgrep
       igrep
-      lnav
+      #lnav
       nmap
       mdbook
       manix
