@@ -79,6 +79,7 @@ in
 
     packages = with pkgs; [
       nix-index
+      uv
 
       fish
       z-lua

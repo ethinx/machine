@@ -15,7 +15,7 @@ in
   # environment.darwinConfig = "$HOME/.nixpkgs/darwin-configuration.nix";
 
   # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
+  # services.nix-daemon.enable = true;
   # nix.package = pkgs.nix;
   #nix.package = pkgs.nixFlakes;
   nixpkgs = {
