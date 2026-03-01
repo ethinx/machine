@@ -5,7 +5,12 @@
     enable = true;
     tmuxp.enable = true;
     plugins = with pkgs; [
-      tmuxPlugins.sensible
+      {
+        plugin = tmuxPlugins.sensible;
+        extraConfig = ''
+          set -g default-command "${pkgs.reattach-to-user-namespace}/bin/reattach-to-user-namespace -l ${pkgs.fish}/bin/fish"
+        '';
+      }
       {
         plugin = tmuxPlugins.continuum;
         extraConfig = ''
@@ -20,6 +25,7 @@
     prefix = "C-a";
     baseIndex = 1;
     keyMode = "vi";
+    shell = "${pkgs.fish}/bin/fish";
     extraConfig = ''
       set-window-option -g xterm-keys on
       bind a send-prefix
