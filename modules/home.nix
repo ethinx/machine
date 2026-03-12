@@ -96,6 +96,7 @@ in
       lua
       # nodejs-16_x
       nodejs
+      pnpm
       yarn
       # nodePackages.wrangler
       # nodePackages.gatsby-cli
