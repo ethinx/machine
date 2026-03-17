@@ -5,6 +5,7 @@
     enable = true;
     extraConfig = {
       init.defaultBranch = "main";
+      core.quotepath = false;
 
       diff = {
         tool = "difftastic";
