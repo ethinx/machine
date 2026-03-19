@@ -108,6 +108,7 @@ in
       cfssl
 
       kitty
+      jujutsu
       git
       bfg-repo-cleaner
       git-crypt
