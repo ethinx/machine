@@ -3,7 +3,7 @@
 {
   programs.git = {
     enable = true;
-    extraConfig = {
+    settings = {
       init.defaultBranch = "main";
       core.quotepath = false;
 
@@ -14,10 +14,10 @@
 
       difftool.diffstatic.cmd = "difft $LOCAL $REMOTE";
       # pull.rebase = true;
-    };
+      user.email = "965612+ethinx@users.noreply.github.com";
+      user.name = "York Wong";
 
-    userEmail = "965612+ethinx@users.noreply.github.com";
-    userName = "York Wong";
+    };
 
     includes = [
       {

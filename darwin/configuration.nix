@@ -23,30 +23,30 @@ in
       allowBroken = true;
     };
 
-    overlays = [
-      (self: super: {
-        python310 = super.python310.override {
-          packageOverrides = pyself: pysuper: {
-            libtmux = pysuper.libtmux.overridePythonAttrs (_: rec {
-              disabledTests = [
-                "test_new_session_width_height"
-                "test_capture_pane_start"
-              ];
-              disabledTestPaths = [
-                "tests/test_test.py"
-                "tests/legacy_api/test_test.py"
-              ];
-            });
-          };
-        };
-        neovim = super.neovim.overrideAttrs (oldAttrs: {
-          src = super.fetchurl {
-            url = "https://github.com/neovim/neovim/archive/refs/heads/master.zip";
-            sha256 = "xxx";
-          };
-        });
-      })
-    ];
+    # overlays = [
+    #   (self: super: {
+    #     python310 = super.python310.override {
+    #       packageOverrides = pyself: pysuper: {
+    #         libtmux = pysuper.libtmux.overridePythonAttrs (_: rec {
+    #           disabledTests = [
+    #             "test_new_session_width_height"
+    #             "test_capture_pane_start"
+    #           ];
+    #           disabledTestPaths = [
+    #             "tests/test_test.py"
+    #             "tests/legacy_api/test_test.py"
+    #           ];
+    #         });
+    #       };
+    #     };
+    #     # neovim = super.neovim.overrideAttrs (oldAttrs: {
+    #     #   src = super.fetchurl {
+    #     #     url = "https://github.com/neovim/neovim/archive/refs/heads/master.zip";
+    #     #     sha256 = "xxx";
+    #     #   };
+    #     # });
+    #   })
+    # ];
   };
 
   ids.gids.nixbld = 30000;

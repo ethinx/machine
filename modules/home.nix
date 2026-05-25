@@ -17,62 +17,62 @@ in
   # nixpkgs.config.permittedInsecurePackages = [ "nodejs-16.20.2" ];
   nixpkgs.config.allowUnfree = true;
 
-  nixpkgs.overlays = [
-    (self: super: {
-      python310 = super.python310.override {
-        packageOverrides = pyself: pysuper: {
-          libtmux = pysuper.libtmux.overridePythonAttrs (_: rec {
-            disabledTests = [
-              "test_new_session_width_height"
-              "test_capture_pane_start"
-            ];
-            disabledTestPaths = [
-              "tests/test_test.py"
-              "tests/legacy_api/test_test.py"
-            ];
-          });
-        };
-      };
-      # neovim-unwrapped =
-      #   let
-      #     # https://github.com/NixOS/nixpkgs/issues/229275#issuecomment-1532921108
-      #     liblpeg = super.stdenv.mkDerivation
-      #       {
-      #         pname = "liblpeg";
-      #         inherit (super.luajitPackages.lpeg) version meta src;
-      #
-      #         buildInputs = [ super.luajit ];
-      #
-      #         buildPhase = ''
-      #           sed -i makefile -e "s/CC = gcc/CC = clang/"
-      #           sed -i makefile -e "s/-bundle/-dynamiclib/"
-      #
-      #           make macosx
-      #         '';
-      #
-      #         installPhase = ''
-      #           mkdir -p $out/lib
-      #           mv lpeg.so $out/lib/lpeg.dylib
-      #         '';
-      #
-      #         nativeBuildInputs = [ super.fixDarwinDylibNames ];
-      #       };
-      #   in
-      #   super.neovim-unwrapped.overrideAttrs (oldAttrs: rec {
-      #     src = super.fetchFromGitHub {
-      #       owner = "neovim";
-      #       repo = "neovim";
-      #       rev = "b12d193b4a68242fb0c7e4f924c8abce3488e1c8";
-      #       sha256 = "sha256-HYjgX66AVMqG6jxl83O8NzZyUkULZJv3PRaXw9jgR1o=";
-      #     };
-      #     patches = [ ];
-      #     nativeBuildInputs = oldAttrs.nativeBuildInputs ++ super.lib.optionals pkgs.stdenvNoCC.isDarwin [
-      #       liblpeg
-      #       super.libiconv
-      #     ];
-      #   });
-    })
-  ];
+  # nixpkgs.overlays = [
+  #   (self: super: {
+  #     python310 = super.python310.override {
+  #       packageOverrides = pyself: pysuper: {
+  #         libtmux = pysuper.libtmux.overridePythonAttrs (_: rec {
+  #           disabledTests = [
+  #             "test_new_session_width_height"
+  #             "test_capture_pane_start"
+  #           ];
+  #           disabledTestPaths = [
+  #             "tests/test_test.py"
+  #             "tests/legacy_api/test_test.py"
+  #           ];
+  #         });
+  #       };
+  #     };
+  #     # neovim-unwrapped =
+  #     #   let
+  #     #     # https://github.com/NixOS/nixpkgs/issues/229275#issuecomment-1532921108
+  #     #     liblpeg = super.stdenv.mkDerivation
+  #     #       {
+  #     #         pname = "liblpeg";
+  #     #         inherit (super.luajitPackages.lpeg) version meta src;
+  #     #
+  #     #         buildInputs = [ super.luajit ];
+  #     #
+  #     #         buildPhase = ''
+  #     #           sed -i makefile -e "s/CC = gcc/CC = clang/"
+  #     #           sed -i makefile -e "s/-bundle/-dynamiclib/"
+  #     #
+  #     #           make macosx
+  #     #         '';
+  #     #
+  #     #         installPhase = ''
+  #     #           mkdir -p $out/lib
+  #     #           mv lpeg.so $out/lib/lpeg.dylib
+  #     #         '';
+  #     #
+  #     #         nativeBuildInputs = [ super.fixDarwinDylibNames ];
+  #     #       };
+  #     #   in
+  #     #   super.neovim-unwrapped.overrideAttrs (oldAttrs: rec {
+  #     #     src = super.fetchFromGitHub {
+  #     #       owner = "neovim";
+  #     #       repo = "neovim";
+  #     #       rev = "b12d193b4a68242fb0c7e4f924c8abce3488e1c8";
+  #     #       sha256 = "sha256-HYjgX66AVMqG6jxl83O8NzZyUkULZJv3PRaXw9jgR1o=";
+  #     #     };
+  #     #     patches = [ ];
+  #     #     nativeBuildInputs = oldAttrs.nativeBuildInputs ++ super.lib.optionals pkgs.stdenvNoCC.isDarwin [
+  #     #       liblpeg
+  #     #       super.libiconv
+  #     #     ];
+  #     #   });
+  #   })
+  # ];
   home = {
     username = "${username}";
     homeDirectory = "${homePrefix system}/${username}";
@@ -84,7 +84,7 @@ in
       fish
       z-lua
       fzf
-      neofetch
+      fastfetch
       gettext
 
       protobuf
@@ -154,12 +154,11 @@ in
       k6
 
       nixpkgs-fmt
-      node2nix
 
       # vagrant
       podman
       qemu
-      kube3d
+      k3d
       k3sup
       kubernetes-helm
       chart-testing
@@ -175,7 +174,7 @@ in
       terraform
       packer
       cdrtools # for libvirt provider
-      aria
+      aria2
       cabextract
       chntpw
 
