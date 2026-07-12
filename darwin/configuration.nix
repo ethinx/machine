@@ -49,7 +49,7 @@ in
     # ];
   };
 
-  ids.gids.nixbld = 30000;
+  ids.gids.nixbld = 350;
   nix = {
     package = pkgs.nix;
     gc = {
