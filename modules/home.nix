@@ -11,6 +11,7 @@ in
   imports = [
     ./shell.nix
     ./git.nix
+    ./neovim
     ./tmux.nix
   ];
 
@@ -113,7 +114,6 @@ in
       bfg-repo-cleaner
       git-crypt
       lazygit
-      neovim
 
       cmake
       ctags

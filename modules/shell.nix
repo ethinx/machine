@@ -12,6 +12,7 @@ in
     enable = true;
     shellInit = ''
       fish_add_path /etc/profiles/per-user/${username}/bin /run/current-system/sw/bin /nix/var/nix/profiles/default/bin /usr/sbin ~/.local/bin ~/.orbstack/bin
+      fish_add_path -a $HOME/.local/share/nvim/mason/staging/beancount-language-server/bin
       set --export BUN_INSTALL "$HOME/.bun"
       set --export PATH $BUN_INSTALL/bin $PATH
       ${pkgs.z-lua}/bin/z.lua --init fish | source
@@ -56,6 +57,7 @@ in
       #fish_add_path -a ~/Library/Python/3.8/bin
       fish_add_path -a ~/.rd/bin
       fish_add_path -a /usr/sbin
+      fish_add_path -a $HOME/.local/share/nvim/mason/staging/beancount-language-server/bin
       set --export BUN_INSTALL "$HOME/.bun"
       set --export PATH $BUN_INSTALL/bin $PATH
       export PKG_CONFIG_PATH=${pkgs.openssl.dev}/lib/pkgconfig

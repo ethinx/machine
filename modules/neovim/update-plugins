@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+module_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+lockfile="${module_dir}/config/lazy-lock.json"
+config_home="$(mktemp -d)"
+state_home="${XDG_STATE_HOME:-${HOME}/.local/state}"
+runtime_lockfile="${state_home}/nvim/lazy-lock.json"
+trap 'rm -rf "${config_home}"' EXIT
+
+ln -s "${module_dir}/config" "${config_home}/nvim"
+env \
+  XDG_CONFIG_HOME="${config_home}" \
+  NVIM_LAZY_LOCKFILE="${lockfile}" \
+  nvim --headless "+Lazy! sync" "+qa"
+
+mkdir -p "$(dirname -- "${runtime_lockfile}")"
+cp "${lockfile}" "${runtime_lockfile}"
