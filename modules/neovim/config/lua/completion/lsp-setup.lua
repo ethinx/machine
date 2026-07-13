@@ -1,6 +1,8 @@
 local M = {}
 
 function M.config()
+  local border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
+
   -- DEFAULT KEYMAPS
   -- gD = vim.lsp.buf.declaration,
   -- gd = vim.lsp.buf.definition,
@@ -19,8 +21,12 @@ function M.config()
     gr = ":Telescope lsp_references theme=ivy<cr>",
     gD = vim.lsp.buf.declaration,
     gd = vim.lsp.buf.definition,
-    K = vim.lsp.buf.hover,
-    ['<C-k>'] = vim.lsp.buf.signature_help,
+    K = function()
+      vim.lsp.buf.hover({ border = border })
+    end,
+    ['<C-k>'] = function()
+      vim.lsp.buf.signature_help({ border = border })
+    end,
     ['<space>rn'] = vim.lsp.buf.rename,
     -- ['<space>ca'] = vim.lsp.buf.code_action,
     ['<space>f'] = vim.lsp.buf.formatting, -- compatible with nvim-0.7
@@ -154,10 +160,6 @@ function M.config()
       yamlls = {},
     },
   }
-
-  local border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
-  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border })
 
   -- disable virtual_text and use whynothugo/lsp_lines.nvim instread
   vim.diagnostic.config({

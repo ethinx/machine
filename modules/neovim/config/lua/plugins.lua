@@ -192,7 +192,6 @@ return {
     },
     -- config = require("completion.lsp-setup").config,
     config = function()
-      require('lsp-setup').setup({})
       require("completion.lsp-setup").config()
     end,
   },
