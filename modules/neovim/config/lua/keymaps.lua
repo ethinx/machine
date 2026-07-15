@@ -31,6 +31,11 @@ keymap("v", "ss", [[y:%s`<C-R>"``g<left><left>]], default_opts)
 
 keymap("", "<F2>", "<cmd>NvimTreeToggle<cr>", {})
 keymap("", "<F9>", "<cmd>SymbolsOutline<cr>", {})
+keymap("n", "<leader>ti", "<cmd>IBLToggle<cr>", {
+  noremap = true,
+  silent = true,
+  desc = "Toggle indent lines",
+})
 
 -- keymap('n', '<leader>w', ':w!<cr>', default_opts)
 
