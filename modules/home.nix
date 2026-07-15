@@ -1,4 +1,4 @@
-{ pkgs, system, username, ... }:
+{ inputs, pkgs, system, username, ... }:
 let
   isDarwin = system: (builtins.elem system pkgs.lib.platforms.darwin);
   homePrefix = system: if isDarwin system then "/Users" else "/home";
@@ -115,7 +115,7 @@ in
       git-crypt
       lazygit
 
-      cmake
+      inputs.nixpkgs-cmake.legacyPackages.${system}.cmake
       ctags
       cscope
 

@@ -18,7 +18,7 @@ darwin.lib.darwinSystem rec {
 
       # Pass arguments to home.nix
       # ref: https://nix-community.github.io/home-manager/index.html#sec-flakes-nix-darwin-module
-      home-manager.extraSpecialArgs = { inherit nixpkgs username system; };
+      home-manager.extraSpecialArgs = { inherit inputs nixpkgs username system; };
       home-manager.users.${username} = import ../modules/home.nix;
     }
   ];

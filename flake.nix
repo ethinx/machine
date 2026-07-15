@@ -21,6 +21,10 @@
       url = "github:nixos/nixpkgs/nixpkgs-unstable";
     };
 
+    # Keep the user-facing CMake on the latest 3.x release for projects whose
+    # bundled dependencies still rely on policies removed in CMake 4.
+    nixpkgs-cmake.url = "github:NixOS/nixpkgs/ac62194c3917d5f474c1a844b6fd6da2db95077d";
+
     home-manager = {
       url = "github:nix-community/home-manager/master";
       # We want home-manager to use the same set of nixpkgs as our system.
