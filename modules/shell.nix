@@ -1,13 +1,68 @@
-{ pkgs, system, username, ... }:
+{ config, pkgs, system, username, ... }:
 let
   isDarwin = system: (builtins.elem system pkgs.lib.platforms.darwin);
   homePrefix = system: if isDarwin system then "/Users" else "/home";
+  homeDirectory = "${homePrefix system}/${username}";
+  shellEnv = ''
+    . "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh"
+  '';
 in
 {
+  home.sessionPath = [
+    "$HOME/.bun/bin"
+    "$HOME/.local/bin"
+    "$HOME/.cargo/bin"
+    "$HOME/repo/golang/bin"
+    "/etc/profiles/per-user/${username}/bin"
+    "/run/current-system/sw/bin"
+    "/nix/var/nix/profiles/default/bin"
+    "/usr/sbin"
+    "$HOME/.orbstack/bin"
+    "$HOME/Library/Python/3.9/bin"
+    "$HOME/.rd/bin"
+    "$HOME/.local/share/nvim/mason/staging/beancount-language-server/bin"
+  ];
+
+  home.sessionVariables.BASH_ENV = "${homeDirectory}/.config/shell/nix.sh";
+
+  home.file.".config/shell/nix.sh".text = shellEnv;
+
+  # Keep standard rc files writable for installers; only add idempotent includes.
+  home.activation.shellRcIncludes = config.lib.dag.entryAfter [ "linkGeneration" ] ''
+    append_line() {
+      local file="$1" line="$2"
+      ${pkgs.coreutils}/bin/touch "$file"
+      ${pkgs.gnugrep}/bin/grep -Fqx "$line" "$file" || printf '\n%s\n' "$line" >> "$file"
+    }
+
+    remove_line() {
+      local file="$1" line="$2" tmp
+      ${pkgs.gnugrep}/bin/grep -Fqx "$line" "$file" 2>/dev/null || return 0
+      tmp="$(${pkgs.coreutils}/bin/mktemp)"
+      ${pkgs.gnugrep}/bin/grep -Fvx "$line" "$file" > "$tmp" || true
+      ${pkgs.coreutils}/bin/cat "$tmp" > "$file"
+      ${pkgs.coreutils}/bin/rm "$tmp"
+    }
+
+    old_include='. "$HOME/.config/shell/nix.sh"'
+    old_guarded_include='[ -f "$HOME/.config/shell/nix.sh" ] && . "$HOME/.config/shell/nix.sh"'
+    include='if [ -f "$HOME/.config/shell/nix.sh" ]; then . "$HOME/.config/shell/nix.sh"; fi'
+    old_profile_include='[ -f "$HOME/.bashrc" ] && . "$HOME/.bashrc"'
+    profile_include='if [ -f "$HOME/.bashrc" ]; then . "$HOME/.bashrc"; fi'
+
+    remove_line "$HOME/.bashrc" "$old_include"
+    remove_line "$HOME/.bashrc" "$old_guarded_include"
+    remove_line "$HOME/.bash_profile" "$old_profile_include"
+    remove_line "$HOME/.zshenv" "$old_include"
+    remove_line "$HOME/.zshenv" "$old_guarded_include"
+    append_line "$HOME/.bashrc" "$include"
+    append_line "$HOME/.bash_profile" "$profile_include"
+    append_line "$HOME/.zshenv" "$include"
+  '';
+
   programs.fzf = {
     enable = true;
   };
-
   programs.fish = {
     enable = true;
     shellInit = ''
