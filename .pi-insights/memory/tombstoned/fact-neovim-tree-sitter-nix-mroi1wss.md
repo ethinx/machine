@@ -1,7 +1,7 @@
 ---
 id: fact-neovim-tree-sitter-nix-mroi1wss
 kind: fact
-state: active
+state: tombstoned
 weight: 0.86
 topics:
   - Neovim
@@ -11,9 +11,10 @@ relations:
   related_to:[]
   refines:[]
   supersedes:[]
-  superseded_by:[]
+  superseded_by:
+    - fact-neovim-tree-sitter-neovim-lazy-mrol31fw
 created_at: 2026-07-17T05:30:43.659Z
-updated_at: 2026-07-17T05:30:43.659Z
+updated_at: 2026-07-17T06:55:35.180Z
 last_accessed_at: 2026-07-17T05:30:43.659Z
 access_count: 0
 sources:
