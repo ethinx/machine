@@ -10,13 +10,15 @@ topics:
   - Homebrew
   - Pi Insight
   - sim-use
+  - pi-subagents
 relations:
   related_to:[]
-  refines:[]
+  refines:
+    - fact-macos-gui-path-homebrew-nix-cli-mrswdcgr
   supersedes:[]
   superseded_by:[]
 created_at: 2026-07-20T04:02:36.512Z
-updated_at: 2026-07-20T04:02:36.512Z
+updated_at: 2026-07-20T07:22:36.508Z
 last_accessed_at: 2026-07-20T04:02:36.512Z
 access_count: 0
 sources:
@@ -28,10 +30,10 @@ sources:
 review_note: ""
 ---
 # Summary
-macOS GUI PATH 显式包含 Homebrew 与 Nix profiles
+macOS GUI PATH 显式覆盖系统、Homebrew、Nix 与用户 CLI
 
 # Fact
-`darwin/env.nix` 的 `guiPath` 以 macOS 系统目录开头，并显式包含 `/usr/local/bin`、`/opt/homebrew/bin` 及稳定的 Nix profile 路径；该值同时用于 `launchd.user.envVariables.PATH` 和持久化的 `launchctl config user path`。因此通过 LaunchServices 启动的 Pi Insight 等 GUI agent 可发现 Homebrew 安装的 `sim-use`，同时系统工具保持优先。
+`darwin/env.nix` 的 `guiPath` 以 macOS 系统目录开头，并显式包含 `/usr/local/bin`、`/opt/homebrew/bin`、稳定的 Nix profile 路径以及 `/Users/${username}/.local/bin`；该值同时用于 `launchd.user.envVariables.PATH` 和持久化的 `launchctl config user path`。因此通过 LaunchServices 启动的 Pi Insight 可发现 Homebrew 的 `sim-use` 和用户级安装的 `pi`，同时系统工具保持优先。
 
 # Context
-2026-07-20 的 Pi Insight session 中 `sim-use: command not found`，原因是此前为修复 Nix Node PATH 而新增的静态 `guiPath` 漏掉了 `/opt/homebrew/bin`，覆盖了 `/etc/paths.d/homebrew` 通常提供的效果。修复是在 machine flake 中补入该目录，而不是给 Pi Insight 添加 shellCommandPrefix 或 path_helper patch。
+Pi Insight 的 GUI/Agent Host 及 pi-subagents 直接继承 launchd PATH，不会依赖交互式 shell 初始化。先前静态 `guiPath` 补了 Homebrew 但遗漏了 Home Manager 已声明的 `$HOME/.local/bin`，导致 pi-subagents 以 `spawn("pi")` 启动时 ENOENT；中央修复是在 machine flake 中补入用户 CLI 路径，而不是创建 `/usr/local/bin/pi` 临时软链。
