@@ -1,17 +1,19 @@
 { lib, pkgs, username, ... }:
 
 let
-  # Keep macOS tools authoritative; expose only stable Nix profiles to GUI apps.
+  # Keep macOS tools authoritative; expose Homebrew, Nix, and user CLIs to GUI apps.
   guiPath = [
     "/usr/bin"
     "/bin"
     "/usr/sbin"
     "/sbin"
     "/usr/local/bin"
+    "/opt/homebrew/bin"
     "/run/current-system/sw/bin"
     "/nix/var/nix/profiles/default/bin"
     "/etc/profiles/per-user/${username}/bin"
     "/Users/${username}/.nix-profile/bin"
+    "/Users/${username}/.local/bin"
   ];
 in
 {

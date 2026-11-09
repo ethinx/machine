@@ -201,6 +201,8 @@ in
       # python310Packages.pillow
       # python310Packages.opencv3
 
+    ] ++ lib.optionals (system == "aarch64-darwin") [
+      inputs.nixpkgs-secretspec.legacyPackages.${system}.secretspec
     ] ++ lib.optionals pkgs.stdenvNoCC.isLinux [
       # neovim need tree-sitter, when tree-sitter compile plugins, we need to use gcc in the nixpkgs
       # otherwise may encounter issue 'libstdc++.so.6 Cannot open shared object or file: No such file or directory'

@@ -25,6 +25,9 @@
     # bundled dependencies still rely on policies removed in CMake 4.
     nixpkgs-cmake.url = "github:NixOS/nixpkgs/ac62194c3917d5f474c1a844b6fd6da2db95077d";
 
+    # Keep SecretSpec's current provider support without updating the main package set.
+    nixpkgs-secretspec.url = "github:NixOS/nixpkgs/4fe25e12eb9f4c744966dd3de5a05246cf098601";
+
     home-manager = {
       url = "github:nix-community/home-manager/master";
       # We want home-manager to use the same set of nixpkgs as our system.
